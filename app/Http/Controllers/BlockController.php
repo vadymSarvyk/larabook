@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Topic;
+use App\Models\Block;
 
 class BlockController extends Controller
 {
@@ -23,7 +25,9 @@ class BlockController extends Controller
      */
     public function create()
     {
-        return view('block.create', ['page' => 'Add Block']);
+        $block = new Block;
+        $topics = Topic::pluck('topicname', 'id');
+        return view('block.create', ['page' => 'AddBlock', 'block' => $block, 'topics' => $topics]);
     }
 
     /**

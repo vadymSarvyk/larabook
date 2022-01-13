@@ -25,4 +25,5 @@ Route::get('topic/index', [TopicController::class, 'index']);
 Route::get('topic/create', [TopicController::class, 'create']);
 Route::post('topic/store', [TopicController::class, 'store'])->name('topiccreate');
 //Route::resource('topic', TopicController::class);
+Route::post('block/create', [BlockController::class, 'store'])->name('blockcreate');
 Route::resource('block', BlockController::class);

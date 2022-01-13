@@ -16,4 +16,9 @@ class Block extends Model
             'imagesPath',
             'created_at', 'updated_at'
         );
+    protected $rules = [
+        'title' => ['required', 'max:100'],
+        'topicid' => ['required'],
+        'content' => ['required']
+    ];
 }

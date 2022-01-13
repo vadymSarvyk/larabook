@@ -17,9 +17,25 @@
             {{ session('message') }}
         </div>
     @endif
-    {!! Form::model($block, ['action' => 'BlockController@store', 'files' => true, 'class' => 'form']) !!}
-    <div>
-
+    {{-- , 'files' => true, 'class' => 'form' --}}
+    {!! Form::model($block, ['route' => 'blockcreate', 'files' => true, 'class' => 'form']) !!}
+    <div class='form-group'>
+        {!! Form::label('topicid', 'Select Topic', ['class' => 'col-md-2']) !!}
+        {!! Form::select('topicid', $topics, ['class' => 'col-md-8']) !!}
+        <a href="{{ url('topic/create') }}" class="btn btn-sm btn-info col-md-2" type="submit">Add new topic</a>
     </div>
+    <div class="form-group">
+        {!! Form::label('blocktitle', 'Block Title', ['class' => 'col-md-2']) !!}
+        {!! Form::text('title', '', ['class' => 'col-md-10']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('content', 'Add Block content', ['class' => 'col-md-2']) !!}
+        {!! Form::textarea('content', '', ['class' => 'col-md-10', 'cols' => '', 'rows' => '']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('imagepath', 'Add Image', ['class' => 'col-md-2']) !!}
+        {!! Form::file('imagepath', ['class' => 'col-md-10']) !!}
+    </div>
+    <button class="btn btn-success" type="submit">Add Block</button>
     {!! Form::close() !!}
 @endsection
