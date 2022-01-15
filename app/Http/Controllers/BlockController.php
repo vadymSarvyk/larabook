@@ -38,7 +38,24 @@ class BlockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $block = new Block();
+        $fname = $request->file('imagepath');
+        if ($fname != null) {
+            $originalname = $request->file('imagepath')->getClientOriginalName();
+            $request->file('imagepath')->move(public_path() . '/images', $originalname);
+            $block->imagesPath = '/images/' . $originalname;
+        } else {
+            $block->imagesPath = '';
+        }
+        $block->title = $request->title;
+        $block->topicid = $request->topicid;
+        $block->content = $request->content;
+        if ($block->save()) {
+            return redirect()->action([BlockController::class, 'create'])->with('message', 'New block ' . $block->title . ' has been added');
+        } else {
+            $errors = $block->getError();
+            return redirect()->action([BlockController::class, 'create'])->with('errors', $errors)->withInput();
+        }
     }
 
     /**
@@ -60,7 +77,9 @@ class BlockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $block = Block::find($id);
+        $topics = Topic::all();
+        return view('block.edit')->with('page', 'Main Page')->with('block', $block)->with('topics', $topics);
     }
 
     /**
@@ -72,7 +91,18 @@ class BlockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $block = Block::find($id);
+        $block->title = $request->title;
+        $block->content = $request->content;
+        $block->topicid = $request->topicid;
+        echo 'wefwerfwer';
+        if ($request->file('imagepath') != null) {
+            $originalname = $request->file('imagepath')->getClientOriginalName();
+            $request->file('imagepath')->move(public_path() . '/images/' . $originalname);
+            $block->imagesPath = '/images/' . $originalname;
+        }
+        $block->save();
+        return redirect('topic/' . $block->topicid);
     }
 
     /**
@@ -83,6 +113,8 @@ class BlockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $block = Block::find($id);
+        $block->delete();
+        return redirect('topic');
     }
 }

@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::get('topic/index', [TopicController::class, 'index']);
 Route::get('topic/create', [TopicController::class, 'create']);
 Route::post('topic/store', [TopicController::class, 'store'])->name('topiccreate');
-//Route::resource('topic', TopicController::class);
+Route::resource('topic', TopicController::class);
 Route::post('block/create', [BlockController::class, 'store'])->name('blockcreate');
+Route::put('block/update', [BlockController::class, 'update'])->name('editblock');
 Route::resource('block', BlockController::class);

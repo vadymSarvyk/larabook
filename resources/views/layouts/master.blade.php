@@ -18,7 +18,7 @@
                     <a href="{{ url('index') }}">Main Page</a>
                 </li>
                 <li role="presentation" {{ $page == 'Forms' ? 'class=active' : '' }}>
-                    <a href="{{ url('create') }}"> Content Control</a>
+                    <a href="{{ url('block/create') }}"> Content Control</a>
                 </li>
             </ul>
         </div>

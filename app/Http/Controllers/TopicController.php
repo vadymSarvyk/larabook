@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Block;
 use Illuminate\Http\Request;
 use App\Models\Topic;
 
@@ -65,7 +66,9 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        //
+        $topics = Topic::all();
+        $blocks = Block::where('topicid',  $id)->get();
+        return view('topic.index', ['page' => 'Main page', 'topics' => $topics, 'id' => $id, 'blocks' => $blocks]);
     }
 
     /**
@@ -76,7 +79,6 @@ class TopicController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
