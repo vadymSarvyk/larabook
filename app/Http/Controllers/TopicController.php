@@ -80,7 +80,12 @@ class TopicController extends Controller
     public function edit($id)
     {
     }
-
+    public function search(Request $request)
+    {
+        $search = '%' . $request->search . '%';
+        $topics = Topic::where('topicname', 'like', $search)->get();
+        return view('topic.index', ['page' => 'Main page', 'topics' => $topics, 'id' => 0]);
+    }
     /**
      * Update the specified resource in storage.
      *

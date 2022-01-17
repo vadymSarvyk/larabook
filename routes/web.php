@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\TopicController;
-use GuzzleHttp\Promise\Create;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlockController;
+use App\Http\Controllers\TopicController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,16 +15,13 @@ use App\Http\Controllers\BlockController;
 |
 */
 
-Route::get("/info", function () {
-    return view("test.info");
-});
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('topic/index', [TopicController::class, 'index']);
-Route::get('topic/create', [TopicController::class, 'create']);
-Route::post('topic/store', [TopicController::class, 'store'])->name('topiccreate');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 Route::resource('topic', TopicController::class);
-Route::post('block/create', [BlockController::class, 'store'])->name('blockcreate');
-Route::put('block/update', [BlockController::class, 'update'])->name('editblock');
 Route::resource('block', BlockController::class);
+require __DIR__ . '/auth.php';
