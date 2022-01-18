@@ -23,7 +23,7 @@
         @endif
     </div>
     <div class="row">
-        {!! Form::model($topic, ['route' => 'topiccreate']) !!}
+        {!! Form::model($topic, ['route' => 'topic.create']) !!}
         <div class='form-group'>
             {!! Form::label('topicnameform', 'Topic name') !!}
             {!! Form::text('topicname', '', ['class' => 'form-control']) !!}
