@@ -17,6 +17,7 @@
             {{ session('message') }}
         </div>
     @endif
+
     {{-- , 'files' => true, 'class' => 'form' --}}
     {!! Form::model($block, ['route' => 'block.create', 'files' => true, 'class' => 'form']) !!}
     <div class='form-group'>

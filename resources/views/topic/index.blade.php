@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-3 col-md-3 col-lg-3">
-            {{-- {!! Form::open(['action' => 'TopicController@search']) !!}
+            {{-- {!! Form::open(['route' => 'topic.search']) !!}
             <div class="input-group">
                 {!! Form::text('textsearch', ['class' => 'form-control', 'placeholder' => 'Enter Topic']) !!};
                 <span class="input-group-btn">

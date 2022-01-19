@@ -10,12 +10,13 @@
 
     <!-- Fonts -->
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -35,16 +36,19 @@
         <!-- Page Content -->
         <main>
             @section('menu')
-                <div class="mainmenu1 col-sm-12 col-md-12 col-lg-12">
-                    <ul class="nav nav-pills nav-justified">
-                        <li role="presentation" {{ $page == 'Main page' ? 'class=active' : '' }}>
-                            <a href="{{ url('index') }}">Main Page</a>
-                        </li>
-                        <li role="presentation" {{ $page == 'Forms' ? 'class=active' : '' }}>
-                            <a href="{{ url('block/create') }}"> Content Control</a>
-                        </li>
-                    </ul>
-                </div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <ul class="nav">
+                            <li class={{ $page == 'Main page' ? 'active nav-item' : 'nav-item' }}>
+                                <a class="nav-link" href="{{ url('topic/index') }}">Main
+                                    Page</a>
+                            </li>
+                            <li class={{ $page == 'Forms' ? 'active nav-item' : 'nav-item' }}>
+                                <a class="nav-link" href="{{ url('block/create') }}"> Content Control</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             @show
             {{-- {{ $slot }} --}}
             <div class="container col-sm-12 col-md-12 col-lg-12">
