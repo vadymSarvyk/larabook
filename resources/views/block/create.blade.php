@@ -18,7 +18,7 @@
         </div>
     @endif
     {{-- , 'files' => true, 'class' => 'form' --}}
-    {!! Form::model($block, ['route' => 'blockcreate', 'files' => true, 'class' => 'form']) !!}
+    {!! Form::model($block, ['route' => 'block.create', 'files' => true, 'class' => 'form']) !!}
     <div class='form-group'>
         {!! Form::label('topicid', 'Select Topic', ['class' => 'col-md-2']) !!}
         {!! Form::select('topicid', $topics, ['class' => 'col-md-8']) !!}

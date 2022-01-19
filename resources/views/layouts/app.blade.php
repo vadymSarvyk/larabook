@@ -34,7 +34,7 @@
 
         <!-- Page Content -->
         <main>
-            {{-- @section('menu')
+            @section('menu')
                 <div class="mainmenu1 col-sm-12 col-md-12 col-lg-12">
                     <ul class="nav nav-pills nav-justified">
                         <li role="presentation" {{ $page == 'Main page' ? 'class=active' : '' }}>
@@ -45,7 +45,7 @@
                         </li>
                     </ul>
                 </div>
-            @show --}}
+            @show
             {{-- {{ $slot }} --}}
             <div class="container col-sm-12 col-md-12 col-lg-12">
                 @yield('content')
